@@ -1,0 +1,49 @@
+# Eclipse specific files
+.metadata/
+.bin/
+.classpath
+.project
+.settings/
+
+# Build output
+/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE-specific files
+*.log
+*.pydevproject
+*.coverage
+*.coverage.xml
+*.cproject
+*.launch
+*.userprefs
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+*.swp
+
+# Maven or Gradle directories
+/.mvn/
+gradle-wrapper.jar
+gradle-wrapper.properties
+/.gradle/
+build/
+
+# Other files
+*.iml
+
+.idea/
