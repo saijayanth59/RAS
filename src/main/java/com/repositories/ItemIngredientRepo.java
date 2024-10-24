@@ -4,14 +4,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.models.Ingredient;
+import com.models.ItemIngredient;
 
 public interface ItemIngredientRepo {
-    boolean addItemIngredient(int itemId, List<Ingredient> ingredients) throws SQLException; 
+    boolean addItemIngredients(int itemId, List<ItemIngredient> itemIngredients) throws SQLException; 
     
-    boolean updateItemIngredient(int itemId, List<Ingredient> ingredients) throws SQLException;
-    
-    boolean deleteItemIngredient(int itemId, int ingredientId) throws SQLException; 
-    
+    boolean updateItemIngredients(int itemId, List<ItemIngredient> itemIngredients) throws SQLException;
+         
     List<Ingredient> getIngredientsByItemId(int itemId) throws SQLException; 
 }
 

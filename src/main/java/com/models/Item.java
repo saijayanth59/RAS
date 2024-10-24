@@ -1,5 +1,8 @@
 package com.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Item {
 	private int id;
 	private String name;
@@ -8,13 +11,26 @@ public class Item {
 	private String image;
 	private boolean isVeg;
 	private boolean availability;
+	private List<ItemIngredient> itemIngredients;
 	
 	public Item() {
 		super();
 	}
 	
-	
-	
+
+	public List<ItemIngredient> getItemIngredients() {
+		return itemIngredients;
+	}
+
+
+
+
+	public void addItemIngredient(ItemIngredient itemIngredient) {
+		this.itemIngredients.add(itemIngredient);
+	}
+
+
+
 
 	public Item(int id, String name, double price, String description, String image, boolean isVeg,
 			boolean availability) {
@@ -26,6 +42,7 @@ public class Item {
 		this.image = image;
 		this.isVeg = isVeg;
 		this.availability = availability;
+		this.itemIngredients = new ArrayList<>();
 	}
 
 

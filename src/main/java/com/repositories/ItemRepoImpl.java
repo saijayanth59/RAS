@@ -34,12 +34,22 @@ public class ItemRepoImpl implements ItemRepo{
 
 
 	        int affectedRows = stmt.executeUpdate();
-	        return affectedRows > 0; 
+	        if (affectedRows > 0) {
+	            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+	                if (generatedKeys.next()) {
+	                    int itemId = generatedKeys.getInt(1);
+
+	                    ItemIngredientRepoImpl itemIngredientRepo = new ItemIngredientRepoImpl(connection);
+	                    return itemIngredientRepo.addItemIngredients(itemId, item.getItemIngredients());
+	                }
+	            }
+	        }
 	        
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	        throw e;
 	    }
+		return false;
 	}
 
 
@@ -62,12 +72,23 @@ public class ItemRepoImpl implements ItemRepo{
 	        stmt.setInt(6, item.getId());
 
 	        int affectedRows = stmt.executeUpdate();
-	        return affectedRows > 0; 
+	        
+	        if (affectedRows > 0) {
+	            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+	                if (generatedKeys.next()) {
+	                    int itemId = generatedKeys.getInt(1);
+
+	                    ItemIngredientRepoImpl itemIngredientRepo = new ItemIngredientRepoImpl(connection);
+	                    return itemIngredientRepo.updateItemIngredients(itemId, item.getItemIngredients());
+	                }
+	            }
+	        }
 	        
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	        throw e; 
 	}
+		return false;
 }
 
 

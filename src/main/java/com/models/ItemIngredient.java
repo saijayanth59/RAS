@@ -2,8 +2,8 @@ package com.models;
 
 public class ItemIngredient {
 	private int id;
-	private int item_id;
-	private int ingredient_id;
+	private int itemId;
+	private int ingredientId;
 	private double quantity;
 	
 	public ItemIngredient() {
@@ -13,8 +13,8 @@ public class ItemIngredient {
 	public ItemIngredient(int id, int item_id, int ingredient_id, double quantity) {
 		super();
 		this.id = id;
-		this.item_id = item_id;
-		this.ingredient_id = ingredient_id;
+		this.itemId = item_id;
+		this.ingredientId = ingredient_id;
 		this.quantity = quantity;
 	}
 
@@ -26,20 +26,20 @@ public class ItemIngredient {
 		this.id = id;
 	}
 
-	public int getItem_id() {
-		return item_id;
+	public int getItemId() {
+		return itemId;
 	}
 
-	public void setItem_id(int item_id) {
-		this.item_id = item_id;
+	public void setItemId(int item_id) {
+		this.itemId = item_id;
 	}
 
-	public int getIngredient_id() {
-		return ingredient_id;
+	public int getIngredientId() {
+		return ingredientId;
 	}
 
-	public void setIngredient_id(int ingredient_id) {
-		this.ingredient_id = ingredient_id;
+	public void setIngredientId(int ingredient_id) {
+		this.ingredientId = ingredient_id;
 	}
 
 	public double getQuantity() {
@@ -52,7 +52,7 @@ public class ItemIngredient {
 
 	@Override
 	public String toString() {
-		return "ItemIngredient [id=" + id + ", item_id=" + item_id + ", ingredient_id=" + ingredient_id + ", quantity="
+		return "ItemIngredient [id=" + id + ", item_id=" + itemId + ", ingredient_id=" + ingredientId + ", quantity="
 				+ quantity + "]";
 	}
 	

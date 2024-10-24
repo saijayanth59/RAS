@@ -1,17 +1,33 @@
 package com.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomerOrder {
 	private int id;
 	private int customerId;
 	private int noOfItems;
 	private String status;
 	private double totalPrice;
+	private List<OrderItem> orderItems;
 	
 	public CustomerOrder() {
 		super();
 	}
 	
 	
+
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
+	}
+
+
+
+	public void addItems(OrderItem orderItem) {
+		this.orderItems.add(orderItem);
+	}
+
+
 
 	public CustomerOrder(int id, int customerId, int noOfItems, String status, double totalPrice) {
 		super();
@@ -20,6 +36,7 @@ public class CustomerOrder {
 		this.noOfItems = noOfItems;
 		this.status = status;
 		this.totalPrice = totalPrice;
+		this.orderItems = new ArrayList<>();
 	}
 
 
