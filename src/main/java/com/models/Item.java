@@ -24,7 +24,6 @@ public class Item {
 
 
 
-
 	public void addItemIngredient(ItemIngredient itemIngredient) {
 		this.itemIngredients.add(itemIngredient);
 	}

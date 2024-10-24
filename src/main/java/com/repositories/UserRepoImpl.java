@@ -67,6 +67,7 @@ public class UserRepoImpl implements UserRepo {
             stmt.setString(2, user.getPassword());  
             stmt.setString(3, user.getEmail());
             stmt.setString(4, user.getAddress());
+            stmt.setInt(5, user.getId());
 
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;  
