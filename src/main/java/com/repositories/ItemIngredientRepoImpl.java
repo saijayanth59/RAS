@@ -55,9 +55,9 @@ public class ItemIngredientRepoImpl implements ItemIngredientRepo{
 	            updateStmt.setDouble(1, itemIngredient.getQuantity());
 	            updateStmt.setInt(2, itemId);
 	            updateStmt.setInt(3, itemIngredient.getIngredientId());
-	            updateStmt.addBatch(); 
+	            updateStmt.addBatch();
 	        }
-
+	    	updateStmt.executeBatch();
 	        connection.commit();
 	        return true;
 	        

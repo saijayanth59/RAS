@@ -19,7 +19,7 @@ public class ItemRepoImpl implements ItemRepo{
 	public boolean addItem(Item item) throws SQLException {
 	    String query = "INSERT INTO item (name, price, description, image, is_veg) VALUES (?, ?, ?, ?, ?)";
 	    
-	    try (PreparedStatement stmt = connection.prepareStatement(query)) {
+	    try (PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 	        stmt.setString(1, item.getName());
 	        stmt.setDouble(2, item.getPrice());
 	        stmt.setString(3, item.getDescription());
@@ -55,34 +55,34 @@ public class ItemRepoImpl implements ItemRepo{
 
 	@Override
 	public boolean updateItem(Item item) throws SQLException {
-	    String query = "UPDATE item SET name = ?, price = ?, description = ?, image = ?, is_veg = ? WHERE id = ?";
+//	    String query = "UPDATE item SET name = ?, price = ?, description = ?, image = ?, is_veg = ?, availability = ? WHERE id = ?";
+	    String query = "UPDATE item SET name = ?, price = ?, description = ?,  is_veg = ? WHERE id = ?";
+
 	    
 	    try (PreparedStatement stmt = connection.prepareStatement(query)) {
 	        stmt.setString(1, item.getName());
 	        stmt.setDouble(2, item.getPrice());
 	        stmt.setString(3, item.getDescription());
 	        
-	        if (item.getImage() != null) {
-	            stmt.setString(4, item.getImage());
-	        } else {
-	            stmt.setNull(4, java.sql.Types.VARCHAR);
-	        }
+	        stmt.setBoolean(4, item.isVeg());
+	        stmt.setInt(5, item.getId());
 	        
-	        stmt.setBoolean(5, item.isVeg());
-	        stmt.setInt(6, item.getId());
+//	        if (item.getImage() != null) {  uncomment after image
+//	            stmt.setString(4, item.getImage());
+//	        } else {
+//	            stmt.setNull(4, java.sql.Types.VARCHAR);
+//	        }
+	        
+//	        stmt.setBoolean(5, item.isVeg());
+//	        stmt.setInt(6, item.getId());
 
 	        int affectedRows = stmt.executeUpdate();
 	        
 	        if (affectedRows > 0) {
-	            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-	                if (generatedKeys.next()) {
-	                    int itemId = generatedKeys.getInt(1);
-
-	                    ItemIngredientRepoImpl itemIngredientRepo = new ItemIngredientRepoImpl(connection);
-	                    return itemIngredientRepo.updateItemIngredients(itemId, item.getItemIngredients());
-	                }
-	            }
+	        	ItemIngredientRepoImpl itemIngredientRepo = new ItemIngredientRepoImpl(connection);
+	            return itemIngredientRepo.updateItemIngredients(item.getId(), item.getItemIngredients());
 	        }
+	        
 	        
 	    } catch (SQLException e) {
 	        e.printStackTrace();

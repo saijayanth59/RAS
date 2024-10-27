@@ -15,6 +15,7 @@ public class Item {
 	
 	public Item() {
 		super();
+		this.itemIngredients = new ArrayList<>();
 	}
 	
 
