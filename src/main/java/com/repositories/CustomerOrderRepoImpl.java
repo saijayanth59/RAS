@@ -22,10 +22,11 @@ public class CustomerOrderRepoImpl implements CustomerOrderRepo{
 	    String query = "INSERT INTO customer_order (customer_id, no_of_items, status, total_price) VALUES (?, ?, ?, ?)";
 	    
 	    try (PreparedStatement stmt = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
-	        stmt.setInt(1, order.getCustomerId());
+	    	stmt.setNull(1, java.sql.Types.INTEGER);
 	        stmt.setInt(2, order.getNoOfItems());
 	        stmt.setString(3, "pending");
 	        stmt.setDouble(4, order.getTotalPrice());
+	    	
 
 	        int affectedRows = stmt.executeUpdate();
 

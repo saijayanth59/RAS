@@ -43,7 +43,7 @@
                             <%= item.isAvailability() ? "Available" : "Unavailable" %>
                         </td>
                         <td>
-                            <a class="btn btn-primary btn-sm mx-1" href="update_item.jsp?id=<%= item.getId() %>">Edit</a>
+                            <a class="btn btn-primary btn-sm mx-1" href="edit_item.jsp?id=<%= item.getId() %>">Edit</a>
                             <form class="d-inline" action="deleteItem" method="POST" style="display:inline;">
                                 <input type="hidden" name="id" value="<%= item.getId() %>">
                                 <input type="submit" class="btn btn-danger btn-sm" value="Delete">

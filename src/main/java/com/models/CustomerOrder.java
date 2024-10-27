@@ -13,6 +13,7 @@ public class CustomerOrder {
 	
 	public CustomerOrder() {
 		super();
+		this.orderItems = new ArrayList<>();
 	}
 	
 	

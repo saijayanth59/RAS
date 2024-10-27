@@ -17,7 +17,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="add_item.jsp">Add</a></li>
-            <li><a class="dropdown-item" href="all_items.jsp">All items</a></li>
+            <li><a class="dropdown-item" href="all_items.jsp">View</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -26,8 +26,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="add_ingredient.jsp">Add</a></li>
-            <li><a class="dropdown-item" href="#">Update</a></li>
-            <li><a class="dropdown-item" href="#">Delete</a></li>
+            <li><a class="dropdown-item" href="view_ingredients.jsp">View</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -35,8 +34,8 @@
             Process Order
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Item</a></li>
-            <li><a class="dropdown-item" href="#">Ingredient</a></li>
+            <li><a class="dropdown-item" href="create_customer_order.jsp">Customer order</a></li>
+            <li><a class="dropdown-item" href="customer_orders.jsp">View Customer orders</a></li>
             <li><a class="dropdown-item" href="#">Inventory</a></li>
           </ul>
         </li>
@@ -46,6 +45,8 @@
     </div>
   </div>
 </header>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
