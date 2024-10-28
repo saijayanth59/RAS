@@ -14,7 +14,7 @@
         <div class="container mt-5">
             <h2 class="text-center mb-4">Customer Orders</h2>
            
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
                         <th>Order ID</th>
@@ -29,9 +29,9 @@
                         CustomerOrderRepoImpl orderRepo = new CustomerOrderRepoImpl(DBConnect.connect()); 
                         List<CustomerOrder> orders = orderRepo.getAllCustomerOrders();
                         for (CustomerOrder order : orders) {
-                            String rowClass = "table-warning"; // Default color for "Pending"
-                            if ("Complete".equalsIgnoreCase(order.getStatus())) {
-                                rowClass = "table-success"; // Green for "Complete"
+                            String rowClass = "table-danger"; 
+                            if ("completed".equalsIgnoreCase(order.getStatus())) {
+                                rowClass = "table-success"; 
                             }
                     %>
                     <tr class="<%= rowClass %>">
@@ -41,7 +41,7 @@
                         <td><%= order.getStatus() %></td>
                         <td>
                             <a class="btn btn-primary btn-sm mx-1" href="view_customer_order.jsp?id=<%= order.getId() %>">View</a>
-                            <form class="d-inline" action="deleteOrder" method="POST" style="display:inline;">
+                            <form class="d-inline" action="deleteCustomerOrder" method="POST" style="display:inline;">
                                 <input type="hidden" name="id" value="<%= order.getId() %>">
                                 <input type="submit" class="btn btn-danger btn-sm" value="Delete">
                             </form>

@@ -80,7 +80,7 @@ public class CustomerOrderRepoImpl implements CustomerOrderRepo{
 
 	@Override
 	public List<CustomerOrder> getAllCustomerOrders() throws SQLException {
-	    String query = "SELECT * FROM customer_order";
+	    String query = "SELECT * FROM customer_order ORDER BY status DESC";
 	    List<CustomerOrder> customerOrders = new ArrayList<>();
 	    
 	    try (PreparedStatement stmt = connection.prepareStatement(query);
@@ -206,11 +206,11 @@ public class CustomerOrderRepoImpl implements CustomerOrderRepo{
 //	pending updating the quantities of the items
 	@Override
 	public boolean updateCustomerOrderStatus(int orderId, String status) throws SQLException {
-	    String updateStatusQuery = "UPDATE customer_order SET status = completed WHERE id = ?";
+	    String updateStatusQuery = "UPDATE customer_order SET status = ? WHERE id = ?";
 
 	    try (PreparedStatement stmt = connection.prepareStatement(updateStatusQuery)) {
-	    	
-	        stmt.setInt(1, orderId);
+	    	stmt.setString(1, status);
+	        stmt.setInt(2, orderId);
 	        int affectedRows = stmt.executeUpdate();
 	        return affectedRows > 0;
 	        
@@ -219,5 +219,41 @@ public class CustomerOrderRepoImpl implements CustomerOrderRepo{
 	        throw e; 
 	    }
 	}
+	
+    public int getTotalOrders() {
+        int totalOrders = 0;
+        
+        try {
+            String query = "SELECT COUNT(*) FROM customer_order";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                totalOrders = rs.getInt(1);
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalOrders;
+    }
+    
+    
+    public double getTotalRevenue() {
+        double totalRevenue = 0.0;
+        
+        try {
+            String query = "SELECT SUM(total_price) FROM customer_order WHERE status = 'completed'";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                totalRevenue = rs.getDouble(1);
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalRevenue;
+    }
+
 
 }

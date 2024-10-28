@@ -31,16 +31,23 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle px-2 link-light" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Process Order
+            Customer
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="create_customer_order.jsp">Customer order</a></li>
-            <li><a class="dropdown-item" href="customer_orders.jsp">View Customer orders</a></li>
-            <li><a class="dropdown-item" href="#">Inventory</a></li>
+            <li><a class="dropdown-item" href="create_customer_order.jsp">Create order</a></li>
+            <li><a class="dropdown-item" href="customer_orders.jsp">View orders</a></li>
+          </ul>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle px-2 link-light" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Inventory
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="create_customer_order.jsp">Create order</a></li>
+            <li><a class="dropdown-item" href="customer_orders.jsp">View orders</a></li>
           </ul>
         </li>
         <li><a href="view-orders.jsp" class="nav-link px-2 link-light">Order History</a></li>
-        <li><a href="new_inventory_order.jsp" class="nav-link px-2 link-light">New Inventory Order</a></li>
       </ul>
     </div>
   </div>

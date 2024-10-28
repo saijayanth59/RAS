@@ -38,7 +38,7 @@
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
-                    <th>Item Name</th>
+                    <th>Item Id</th>
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Total Price</th>
@@ -57,7 +57,10 @@
         </table>
         
         <div class="text-center mt-4">
-        <a class="btn btn-success btn-sm mx-1" href="edit_order.jsp?id=<%= order.getId() %>">Update status</a>
+        <form class="d-inline" action="updateCustomerOrderStatus" method="POST" style="display:inline;">
+              <input type="hidden" name="id" value="<%= order.getId() %>">
+              <input type="submit" class="btn btn-success btn-sm" value="Update Status">
+        </form>
             <a href="customer_orders.jsp" class="btn btn-sm btn-primary">Back to Orders</a>
         </div>
         

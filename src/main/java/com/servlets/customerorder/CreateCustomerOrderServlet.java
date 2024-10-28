@@ -58,7 +58,7 @@ public class CreateCustomerOrderServlet extends HttpServlet{
 			CustomerOrderRepoImpl customerOrderRepo= new CustomerOrderRepoImpl(connection);
 			
 			if (customerOrderRepo.addCustomerOrder(customerOrder)) {
-				res.sendRedirect("index.jsp");
+				res.sendRedirect("customer_orders.jsp");
 			}else {
 				res.sendRedirect("create_customer_order.jsp");
 			}
